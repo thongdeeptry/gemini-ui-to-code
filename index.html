@@ -1,0 +1,228 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game UI</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: sans-serif;
+            background-color: #e9d8a6;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 10px;
+            background-color: #d4ac0d;
+        }
+
+        .top-bar button {
+            background-color: #f08080;
+            color: white;
+            border: 2px solid #ffd700;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .top-bar .bars {
+            width: 100px;
+            height: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 0 5px;
+        }
+
+        .top-bar .energy {
+            background-color: #228b22;
+        }
+
+        .top-bar .experience {
+            background-color: #800080;
+        }
+
+        .top-bar .flag-circle {
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .top-bar .notification {
+            background-color: white;
+            border: 1px solid black;
+            padding: 5px 10px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            font-size: 12px;
+        }
+
+        .game-area {
+            flex-grow: 1;
+            background-image: url('your-game-background-image.jpg'); /* Thay thế bằng hình nền trò chơi */
+            background-size: cover;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .game-area .notification-broly{
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .bottom-bar {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 10px;
+            background-color: transparent;
+        }
+
+        .bottom-bar button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background-color: #f08080;
+            color: white;
+            font-size: 20px;
+        }
+
+        .bottom-bar .attack {
+            border: 3px solid #ffd700;
+            background-color: #f08080;
+        }
+
+        .bottom-bar .skill {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            border: none;
+            color: white;
+            font-size: 24px;
+        }
+
+        .bottom-bar .skill:nth-child(1) {
+            background-color: #40e0d0;
+        }
+
+        .bottom-bar .skill:nth-child(2) {
+            background-color: #f08080;
+        }
+
+        .bottom-bar .skill:nth-child(3) {
+            background-color: #ffd700;
+        }
+        
+        .bottom-bar .heart {
+            background-color: #f08080;
+        }
+
+        .joystick {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: red;
+            opacity: 0.7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .joystick::before {
+            content: '';
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #f08080;
+        }
+
+        .chat {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #f08080;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .chat i {
+            color: white;
+            font-size: 24px;
+        }
+
+        .settings {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background-color: transparent;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .settings i {
+            color: white;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="top-bar">
+            <button>Mộc nhân</button>
+            <div class="bars energy"></div>
+            <div class="bars experience"></div>
+            <div class="flag-circle">Cờ<span style="font-size: 10px;">13</span></div>
+            <div class="notification">bolavanlam muốn giao dịch</div>
+        </div>
+        <div class="game-area">
+            <div class="chat"><i class="fas fa-comment-alt"></i></div>
+            <div class="joystick"></div>
+            <div class="settings"><i class="fas fa-cog"></i></div>
+            <div class="notification-broly">Nhà Broly</div>
+        </div>
+        <div class="bottom-bar">
+            <button class="skill"><i class="fas fa-music"></i></button>
+            <button class="skill"><i class="fas fa-hand-sparkles"></i></button>
+            <button class="skill"><i class="fas fa-ellipsis-h"></i></button>
+            <button class="heart"><i class="fas fa-heart"></i> 0</button>
+            <button class="attack"><i class="fas fa-fist-raised"></i></button>
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js"></script>
+</body>
+</html>
+```
